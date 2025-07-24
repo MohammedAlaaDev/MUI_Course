@@ -1,33 +1,31 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
-import Button from '@mui/material/Button';
-import AddReactionIcon from '@mui/icons-material/AddReaction';
-import IconButton from '@mui/material/IconButton'
-import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import { Avatar, Link, Typography } from '@mui/material';
+
+import csvImg from "../assets/csv2.jpg"
+
 export default function Root() {
     return (
         <>
 
-            <Button variant="text">Text</Button>
-            <Button variant="contained">Contained</Button>
-            <Button variant="outlined">Outlined</Button>
+            <AppBar position="static">
+                <Toolbar>
+                    <Link color="inherit" sx={{ flexGrow: 1 }} underline="none" href="/">MY Expenses</Link>
 
-            <Button sx={{margin: "0 auto", display: "flex"}} startIcon={<AddReactionIcon />} variant="contained" color="error">
-                add reaction
-            </Button>
+                    <Typography variant="subtitle1" component="p" mr={2}>
+                        Ali Hassan
+                    </Typography>
 
-
-
-
-            <IconButton color="info" size="large">
-                <AutoAwesomeMotionIcon fontSize="large" />
-            </IconButton>
+                    <Avatar alt="castlevania" src={csvImg} />
+                </Toolbar>
+            </AppBar>
 
 
 
 
-            
             <Outlet />
         </>
     )
