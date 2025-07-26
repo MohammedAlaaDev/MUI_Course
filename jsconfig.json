@@ -12,7 +12,7 @@
     },
     "include": [
         "src"
-    ],
+, "MUI Components"    ],
     "exclude": [
         "node_modules",
         "build"
