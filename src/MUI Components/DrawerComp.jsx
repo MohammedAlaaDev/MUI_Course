@@ -1,7 +1,13 @@
 import React from 'react'
-import { Divider, Drawer, Toolbar } from '@mui/material'
+import { Divider, Drawer, Toolbar, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 
-export default function DrawerComp({drawerWidth}) {
+import HomeIcon from '@mui/icons-material/Home';
+import CreateIcon from '@mui/icons-material/Create';
+import PersonIcon from '@mui/icons-material/Person';
+import Settings from '@mui/icons-material/Settings';
+import LogoutIcon from '@mui/icons-material/Logout';
+
+export default function DrawerComp({ drawerWidth }) {
     return (
         <Drawer
             sx={{
@@ -18,8 +24,52 @@ export default function DrawerComp({drawerWidth}) {
             <Toolbar />
             <Divider />
 
-            <Divider />
+            <List>
+                <ListItem disablePadding>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <HomeIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Home" />
+                    </ListItemButton>
+                </ListItem>
 
+                <ListItem disablePadding>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <CreateIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Create" />
+                    </ListItemButton>
+                </ListItem>
+
+                <ListItem disablePadding>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <PersonIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Profile" />
+                    </ListItemButton>
+                </ListItem>
+
+                <ListItem disablePadding>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <Settings />
+                        </ListItemIcon>
+                        <ListItemText primary="Settings" />
+                    </ListItemButton>
+                </ListItem>
+                
+                <ListItem disablePadding>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <LogoutIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Logout" />
+                    </ListItemButton>
+                </ListItem>
+            </List>
         </Drawer>
     )
 }
