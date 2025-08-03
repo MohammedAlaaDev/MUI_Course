@@ -1,7 +1,10 @@
 import React from 'react'
-import { Divider, Drawer, Toolbar } from '@mui/material'
+import { Divider, Drawer, Toolbar, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 
-export default function DrawerComp({drawerWidth}) {
+import HomeIcon from '@mui/icons-material/Home';
+import CreateIcon from '@mui/icons-material/Create';
+
+export default function DrawerComp({ drawerWidth }) {
     return (
         <Drawer
             sx={{
@@ -18,8 +21,24 @@ export default function DrawerComp({drawerWidth}) {
             <Toolbar />
             <Divider />
 
-            <Divider />
-
+            <List>
+                <ListItem disablePadding>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <HomeIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Home" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <CreateIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Create" />
+                    </ListItemButton>
+                </ListItem>
+            </List>
         </Drawer>
     )
 }
