@@ -4,6 +4,8 @@ import { Outlet } from 'react-router-dom'
 import AppBarComp from '../MUI Components/AppBarComp'
 import DrawerComp from '../MUI Components/DrawerComp';
 
+import { Box } from '@mui/material';
+
 export default function Root() {
     let dw = "240px";
     return (
@@ -12,7 +14,9 @@ export default function Root() {
             <AppBarComp drawerWidth={dw} />
             <DrawerComp drawerWidth={dw} />
 
-            <Outlet />
+            <Box sx={{ml: dw, width: `calc(100% - ${dw})`, display: "flex", justifyContent: "center"}}>
+                <Outlet />
+            </Box>
         </>
     )
 }
