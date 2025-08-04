@@ -14,7 +14,7 @@ export default function Root() {
             <AppBarComp drawerWidth={dw} />
             <DrawerComp drawerWidth={dw} />
 
-            <Box sx={{ml: dw, width: `calc(100% - ${dw})`, display: "flex", justifyContent: "center"}}>
+            <Box component="main" sx={{ ml: dw, mt: "50px", width: `calc(100% - ${dw})`, display: "flex", justifyContent: "center" }}>
                 <Outlet />
             </Box>
         </>
