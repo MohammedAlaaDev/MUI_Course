@@ -27,8 +27,14 @@ function App() {
   const darkTheme = createTheme({
     palette: {
       mode: 'dark',
+      // @ts-ignore
+      myColor: {
+        main: '#647488',
+        contrastText: '#fff',
+      }
     },
   });
+
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
