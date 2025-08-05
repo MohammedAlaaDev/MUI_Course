@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -23,17 +25,11 @@ const router = createBrowserRouter(
   )
 );
 
+
+
 function App() {
-  const darkTheme = createTheme({
-    palette: {
-      mode: 'dark',
-    },
-  });
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
       <RouterProvider router={router} />
-    </ThemeProvider>
   );
 }
 

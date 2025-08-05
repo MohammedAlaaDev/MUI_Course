@@ -11,7 +11,8 @@ import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 export default function Create() {
     const ColorButton = styled(Button)(({ theme }) => ({
         color: theme.palette.getContrastText(blue[700]),
-        backgroundColor: blue[700],
+        // @ts-ignore
+        backgroundColor: theme.palette.myColor.main,
         '&:hover': {
             backgroundColor: blue[900],
         },
