@@ -12,8 +12,6 @@ import Root from "./pages/Root";
 import Home from "./pages/home/Home";
 import Create from "./pages/create/Create";
 
-import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>

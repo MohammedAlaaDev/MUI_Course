@@ -31,6 +31,7 @@ export default function DrawerComp({ drawerWidth, fnc, mode }) {
             <Toolbar sx={{ justifyContent: "center" }}>
                 <IconButton onClick={() => {
                     fnc(mode === "light" ? "dark" : "light");
+                    localStorage.setItem("theme", mode === "light" ? "dark" : "light");
                 }}>
                     {mode === "light" ? <LightModeIcon sx={{color: "orange"}} /> : <DarkModeIcon />}
                 </IconButton>

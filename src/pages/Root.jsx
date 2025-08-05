@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import AppBarComp from '../MUI Components/AppBarComp'
@@ -8,7 +8,7 @@ import { Box, createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 
 export default function Root() {
     let dw = "240px";
-    const [myMode, setmyMode] = useState('light');
+    const [myMode, setmyMode] = useState(localStorage.getItem("theme") !== undefined? localStorage.getItem("theme") : 'light');
 
     const darkTheme = createTheme({
         palette: {
