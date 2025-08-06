@@ -31,17 +31,18 @@ export default function Root() {
                 }),
         },
     });
-    // myColor: {
-    // }
+
+    let [theDisplay, setTheDisplay] = useState("none");
+
     return (
         <>
             <ThemeProvider theme={darkTheme}>
                 <CssBaseline />
 
-                <AppBarComp drawerWidth={dw} />
-                <DrawerComp drawerWidth={dw} fnc={setmyMode} mode={mode} />
+                <AppBarComp drawerWidth={dw} dspSet={setTheDisplay} dsp={theDisplay}/>
+                <DrawerComp drawerWidth={dw} fnc={setmyMode} mode={mode} dsp={theDisplay} />
 
-                <Box component="main" sx={{ ml: dw, mt: "50px", width: `calc(100% - ${dw})`, display: "flex", justifyContent: "center" }}>
+                <Box component="main" sx={{padding: "10px", ml: {sm: dw}, mt: "50px", width: {xs: "100%",sm: `calc(100% - ${dw})`}, display: "flex", justifyContent: "center" }}>
                     <Outlet />
                 </Box>
             </ThemeProvider>

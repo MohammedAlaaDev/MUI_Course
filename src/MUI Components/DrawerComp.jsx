@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Divider, Drawer, Toolbar, List, ListItem, ListItemButton, ListItemIcon, ListItemText, IconButton, useTheme } from '@mui/material';
 
 import HomeIcon from '@mui/icons-material/Home';
@@ -12,13 +12,13 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { useNavigate } from "react-router";
 import { useLocation } from 'react-router-dom';
 
-export default function DrawerComp({ drawerWidth, fnc, mode }) {
+export default function DrawerComp({ drawerWidth, fnc, mode, dsp }) {
     let location = useLocation();
 
     let navigate = useNavigate();
 
-    let myTheme = useTheme();
-
+    let [drawer, setDrawer] = useState("none");
+    
     return (
         <Drawer
             sx={{
@@ -28,7 +28,7 @@ export default function DrawerComp({ drawerWidth, fnc, mode }) {
                     width: drawerWidth,
                     boxSizing: 'border-box',
                 },
-                display: {xs: "none", sm: "block"},
+                display: {xs: dsp, sm: "block"},
             }}
 
             variant="permanent"
