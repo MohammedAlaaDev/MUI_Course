@@ -10,8 +10,10 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 import { useNavigate } from "react-router";
+import { useLocation } from 'react-router-dom';
 
 export default function DrawerComp({ drawerWidth, fnc, mode }) {
+    let location = useLocation();
 
     let navigate = useNavigate();
 
@@ -40,7 +42,7 @@ export default function DrawerComp({ drawerWidth, fnc, mode }) {
             <Divider />
 
             <List>
-                <ListItem disablePadding>
+                <ListItem disablePadding sx={{bgcolor: location.pathname=="/"? "grey": null}}>
                     <ListItemButton onClick={() => {
                         navigate("/");
                     }}>
@@ -51,7 +53,7 @@ export default function DrawerComp({ drawerWidth, fnc, mode }) {
                     </ListItemButton>
                 </ListItem>
 
-                <ListItem disablePadding>
+                <ListItem disablePadding sx={{bgcolor: location.pathname=="/create"? "grey": null}}>
                     <ListItemButton onClick={() => {
                         navigate("/create");
                     }}>
