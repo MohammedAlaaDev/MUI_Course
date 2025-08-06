@@ -1,5 +1,5 @@
 import React from 'react'
-import { Divider, Drawer, Toolbar, List, ListItem, ListItemButton, ListItemIcon, ListItemText, IconButton } from '@mui/material';
+import { Divider, Drawer, Toolbar, List, ListItem, ListItemButton, ListItemIcon, ListItemText, IconButton, useTheme } from '@mui/material';
 
 import HomeIcon from '@mui/icons-material/Home';
 import CreateIcon from '@mui/icons-material/Create';
@@ -17,6 +17,8 @@ export default function DrawerComp({ drawerWidth, fnc, mode }) {
 
     let navigate = useNavigate();
 
+    let myTheme = useTheme();
+
     return (
         <Drawer
             sx={{
@@ -26,7 +28,9 @@ export default function DrawerComp({ drawerWidth, fnc, mode }) {
                     width: drawerWidth,
                     boxSizing: 'border-box',
                 },
+                display: {xs: "none", sm: "block"},
             }}
+
             variant="permanent"
             anchor="left"
         >
@@ -35,14 +39,14 @@ export default function DrawerComp({ drawerWidth, fnc, mode }) {
                     fnc(mode === "light" ? "dark" : "light");
                     localStorage.setItem("theme", mode === "light" ? "dark" : "light");
                 }}>
-                    {mode === "light" ? <LightModeIcon sx={{color: "orange"}} /> : <DarkModeIcon />}
+                    {mode === "light" ? <LightModeIcon sx={{ color: "orange" }} /> : <DarkModeIcon />}
                 </IconButton>
             </Toolbar>
 
             <Divider />
 
             <List>
-                <ListItem disablePadding sx={{bgcolor: location.pathname=="/"? "grey": null}}>
+                <ListItem disablePadding sx={{ bgcolor: location.pathname == "/" ? "grey" : null }}>
                     <ListItemButton onClick={() => {
                         navigate("/");
                     }}>
@@ -53,7 +57,7 @@ export default function DrawerComp({ drawerWidth, fnc, mode }) {
                     </ListItemButton>
                 </ListItem>
 
-                <ListItem disablePadding sx={{bgcolor: location.pathname=="/create"? "grey": null}}>
+                <ListItem disablePadding sx={{ bgcolor: location.pathname == "/create" ? "grey" : null }}>
                     <ListItemButton onClick={() => {
                         navigate("/create");
                     }}>
