@@ -14,7 +14,8 @@ export default function Create() {
         // @ts-ignore
         backgroundColor: theme.palette.myColor.main,
         '&:hover': {
-            backgroundColor: blue[900],
+            // @ts-ignore
+            backgroundColor: theme.palette.myColor.hov,
         },
     }));
     return (
