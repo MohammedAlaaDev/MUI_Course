@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { Divider, Drawer, Toolbar, List, ListItem, ListItemButton, ListItemIcon, ListItemText, IconButton, useTheme } from '@mui/material';
+import { Divider, Drawer, Toolbar, List, ListItem, ListItemButton, ListItemIcon, ListItemText, IconButton } from '@mui/material';
 
 import HomeIcon from '@mui/icons-material/Home';
 import CreateIcon from '@mui/icons-material/Create';
@@ -12,13 +11,12 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { useNavigate } from "react-router";
 import { useLocation } from 'react-router-dom';
 
-export default function DrawerComp({ drawerWidth, fnc, mode, dsp }) {
+export default function DrawerComp({ drawerWidth, fnc, mode, dsp, drawer, closeDrawer }) {
     let location = useLocation();
 
     let navigate = useNavigate();
 
-    let [drawer, setDrawer] = useState("none");
-    
+
     return (
         <Drawer
             sx={{
@@ -28,11 +26,15 @@ export default function DrawerComp({ drawerWidth, fnc, mode, dsp }) {
                     width: drawerWidth,
                     boxSizing: 'border-box',
                 },
-                display: {xs: dsp, sm: "block"},
+                display: { xs: dsp, sm: "block" },
             }}
 
-            variant="permanent"
+            variant={drawer.variant}
+            open={drawer.open}
             anchor="left"
+            onClose={() => {
+                closeDrawer();
+            }}
         >
             <Toolbar sx={{ justifyContent: "center" }}>
                 <IconButton onClick={() => {
@@ -46,7 +48,7 @@ export default function DrawerComp({ drawerWidth, fnc, mode, dsp }) {
             <Divider />
 
             <List>
-                <ListItem disablePadding sx={{ bgcolor: location.pathname == "/" ? "grey" : null }}>
+                <ListItem disablePadding sx={{ bgcolor: location.pathname === "/" ? "grey" : null }}>
                     <ListItemButton onClick={() => {
                         navigate("/");
                     }}>
@@ -57,7 +59,7 @@ export default function DrawerComp({ drawerWidth, fnc, mode, dsp }) {
                     </ListItemButton>
                 </ListItem>
 
-                <ListItem disablePadding sx={{ bgcolor: location.pathname == "/create" ? "grey" : null }}>
+                <ListItem disablePadding sx={{ bgcolor: location.pathname === "/create" ? "grey" : null }}>
                     <ListItemButton onClick={() => {
                         navigate("/create");
                     }}>

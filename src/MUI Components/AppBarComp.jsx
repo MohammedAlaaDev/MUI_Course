@@ -3,7 +3,8 @@ import { AppBar, Avatar, Link, Toolbar, Typography, Box, IconButton } from '@mui
 import MenuIcon from '@mui/icons-material/Menu';
 import csvImg from '../assets/csv2.jpg';
 
-export default function AppBarComp({ drawerWidth, dspSet, dsp }) {
+export default function AppBarComp({ drawerWidth, dspSet, showDrawer }) {
+
     return (
         <AppBar position="static"
             sx={{
@@ -11,9 +12,9 @@ export default function AppBarComp({ drawerWidth, dspSet, dsp }) {
                 ml: { sm: drawerWidth },
             }}>
             <Toolbar sx={{ justifyContent: "space-between" }}>
-                <Box sx={{display: "flex", alignItems: "center", gap: "20px"}}>
-                    <IconButton sx={{display: {sm: "none",}}} onClick={()=>{
-                        dspSet(dsp==="none"? "block": "none");
+                <Box sx={{ display: "flex", alignItems: "center", gap: "20px" }}>
+                    <IconButton sx={{ display: { sm: "none", } }} onClick={() => {
+                        showDrawer();
                     }}>
                         <MenuIcon />
                     </IconButton>

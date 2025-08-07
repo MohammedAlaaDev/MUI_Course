@@ -17,14 +17,14 @@ export default function Root() {
             ...(mode === "light"
                 ? {
                     // palette values for light mode
-                    myColor : {
+                    myColor: {
                         main: "#647488",
                         hov: "#4dabf5",
                     }
                 }
                 : {
                     // palette values for dark mode
-                    myColor : {
+                    myColor: {
                         main: "#00e676",
                         hov: "#14a37f",
                     }
@@ -33,16 +33,29 @@ export default function Root() {
     });
 
     let [theDisplay, setTheDisplay] = useState("none");
+    let [drawervar, setDrawervar] = useState({ variant: "permanent", open: false });
+
+    function closeDrawer() {
+        setTheDisplay("none");
+        setDrawervar({ variant: "permanent", open: false });
+    }
+
+    function showDrawer() {
+        setTheDisplay("block");
+        setDrawervar({ variant: "temporary", open: true });
+    }
 
     return (
         <>
+
             <ThemeProvider theme={darkTheme}>
                 <CssBaseline />
 
-                <AppBarComp drawerWidth={dw} dspSet={setTheDisplay} dsp={theDisplay}/>
-                <DrawerComp drawerWidth={dw} fnc={setmyMode} mode={mode} dsp={theDisplay} />
+                <AppBarComp drawerWidth={dw} dspSet={setTheDisplay} showDrawer={showDrawer} />
 
-                <Box component="main" sx={{padding: "10px", ml: {sm: dw}, mt: "50px", width: {xs: "100%",sm: `calc(100% - ${dw})`}, display: "flex", justifyContent: "center" }}>
+                <DrawerComp drawerWidth={dw} fnc={setmyMode} mode={mode} dsp={theDisplay} drawer={drawervar} closeDrawer={closeDrawer} />
+
+                <Box component="main" sx={{ padding: "10px", ml: { sm: dw }, mt: "50px", width: { xs: "100%", sm: `calc(100% - ${dw})` }, display: "flex", justifyContent: "center" }}>
                     <Outlet />
                 </Box>
             </ThemeProvider>
