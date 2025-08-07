@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -16,7 +14,7 @@ import Error from "./pages/error/Error";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
-
+      
       <Route index element={<Home />} />
       <Route path="create" element={<Create />} />
       <Route path="*" element={<Error />} />
