@@ -11,6 +11,7 @@ import Root from "./pages/Root";
 
 import Home from "./pages/home/Home";
 import Create from "./pages/create/Create";
+import Error from "./pages/error/Error";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
 
       <Route index element={<Home />} />
       <Route path="create" element={<Create />} />
+      <Route path="*" element={<Error />} />
 
     </Route>
   )
