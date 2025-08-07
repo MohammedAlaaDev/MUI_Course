@@ -37,11 +37,6 @@ export default function DrawerComp({ drawerWidth, fnc, mode, dsp, drawer, closeD
             icon: <Settings />,
             path: "/Settings",
         },
-        {
-            text: "Logout",
-            icon: <LogoutIcon />,
-            path: "/logout",
-        },
     ]
 
     let myListUI = myList.map((obj) => {
@@ -91,6 +86,14 @@ export default function DrawerComp({ drawerWidth, fnc, mode, dsp, drawer, closeD
 
             <List>
                 {myListUI}
+                <ListItem disablePadding>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <LogoutIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Logout" />
+                    </ListItemButton>
+                </ListItem>
             </List>
         </Drawer>
     )
