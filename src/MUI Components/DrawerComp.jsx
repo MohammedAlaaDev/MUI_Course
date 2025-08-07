@@ -16,6 +16,48 @@ export default function DrawerComp({ drawerWidth, fnc, mode, dsp, drawer, closeD
 
     let navigate = useNavigate();
 
+    let myList = [
+        {
+            text: "Home",
+            icon: <HomeIcon />,
+            path: "/",
+        },
+        {
+            text: "Create",
+            icon: <CreateIcon />,
+            path: "/create",
+        },
+        {
+            text: "Profile",
+            icon: <PersonIcon />,
+            path: "/profile",
+        },
+        {
+            text: "Settings",
+            icon: <Settings />,
+            path: "/Settings",
+        },
+        {
+            text: "Logout",
+            icon: <LogoutIcon />,
+            path: "/logout",
+        },
+    ]
+
+    let myListUI = myList.map((obj) => {
+        return (
+            <ListItem disablePadding sx={{ bgcolor: location.pathname === obj.path ? "grey" : null }}>
+                <ListItemButton onClick={() => {
+                    navigate(obj.path);
+                }}>
+                    <ListItemIcon>
+                        {obj.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={obj.text} />
+                </ListItemButton>
+            </ListItem>
+        )
+    })
 
     return (
         <Drawer
@@ -48,54 +90,7 @@ export default function DrawerComp({ drawerWidth, fnc, mode, dsp, drawer, closeD
             <Divider />
 
             <List>
-                <ListItem disablePadding sx={{ bgcolor: location.pathname === "/" ? "grey" : null }}>
-                    <ListItemButton onClick={() => {
-                        navigate("/");
-                    }}>
-                        <ListItemIcon>
-                            <HomeIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Home" />
-                    </ListItemButton>
-                </ListItem>
-
-                <ListItem disablePadding sx={{ bgcolor: location.pathname === "/create" ? "grey" : null }}>
-                    <ListItemButton onClick={() => {
-                        navigate("/create");
-                    }}>
-                        <ListItemIcon>
-                            <CreateIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Create" />
-                    </ListItemButton>
-                </ListItem>
-
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <PersonIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Profile" />
-                    </ListItemButton>
-                </ListItem>
-
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <Settings />
-                        </ListItemIcon>
-                        <ListItemText primary="Settings" />
-                    </ListItemButton>
-                </ListItem>
-
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <LogoutIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Logout" />
-                    </ListItemButton>
-                </ListItem>
+                {myListUI}
             </List>
         </Drawer>
     )
