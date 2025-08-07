@@ -7,7 +7,6 @@ import { blue } from "@mui/material/colors";
 
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-import { useLocation } from "react-router-dom";
 
 export default function Create() {
     const ColorButton = styled(Button)(({ theme }) => ({
@@ -43,7 +42,7 @@ export default function Create() {
                 }}
                 variant="filled"
             />
-            <ColorButton variant="contained" sx={{ alignSelf: "self-start" }}>Submit<KeyboardArrowRightIcon/></ColorButton>
+            <ColorButton variant="contained" sx={{ alignSelf: "self-start" }}>Submit<KeyboardArrowRightIcon /></ColorButton>
         </Box>
     )
 }

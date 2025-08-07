@@ -1,4 +1,3 @@
-import React from 'react'
 import { Divider, Drawer, Toolbar, List, ListItem, ListItemButton, ListItemIcon, ListItemText, IconButton } from '@mui/material';
 
 import HomeIcon from '@mui/icons-material/Home';
@@ -12,10 +11,53 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { useNavigate } from "react-router";
 import { useLocation } from 'react-router-dom';
 
-export default function DrawerComp({ drawerWidth, fnc, mode }) {
+export default function DrawerComp({ drawerWidth, fnc, mode, dsp, drawer, closeDrawer }) {
     let location = useLocation();
 
     let navigate = useNavigate();
+
+    let myList = [
+        {
+            text: "Home",
+            icon: <HomeIcon />,
+            path: "/",
+        },
+        {
+            text: "Create",
+            icon: <CreateIcon />,
+            path: "/create",
+        },
+        {
+            text: "Profile",
+            icon: <PersonIcon />,
+            path: "/profile",
+        },
+        {
+            text: "Settings",
+            icon: <Settings />,
+            path: "/Settings",
+        },
+        {
+            text: "Logout",
+            icon: <LogoutIcon />,
+            path: "/logout",
+        },
+    ]
+
+    let myListUI = myList.map((obj) => {
+        return (
+            <ListItem disablePadding sx={{ bgcolor: location.pathname === obj.path ? "grey" : null }}>
+                <ListItemButton onClick={() => {
+                    navigate(obj.path);
+                }}>
+                    <ListItemIcon>
+                        {obj.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={obj.text} />
+                </ListItemButton>
+            </ListItem>
+        )
+    })
 
     return (
         <Drawer
@@ -26,70 +68,29 @@ export default function DrawerComp({ drawerWidth, fnc, mode }) {
                     width: drawerWidth,
                     boxSizing: 'border-box',
                 },
+                display: { xs: dsp, sm: "block" },
             }}
-            variant="permanent"
+
+            variant={drawer.variant}
+            open={drawer.open}
             anchor="left"
+            onClose={() => {
+                closeDrawer();
+            }}
         >
             <Toolbar sx={{ justifyContent: "center" }}>
                 <IconButton onClick={() => {
                     fnc(mode === "light" ? "dark" : "light");
                     localStorage.setItem("theme", mode === "light" ? "dark" : "light");
                 }}>
-                    {mode === "light" ? <LightModeIcon sx={{color: "orange"}} /> : <DarkModeIcon />}
+                    {mode === "light" ? <LightModeIcon sx={{ color: "orange" }} /> : <DarkModeIcon />}
                 </IconButton>
             </Toolbar>
 
             <Divider />
 
             <List>
-                <ListItem disablePadding sx={{bgcolor: location.pathname=="/"? "grey": null}}>
-                    <ListItemButton onClick={() => {
-                        navigate("/");
-                    }}>
-                        <ListItemIcon>
-                            <HomeIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Home" />
-                    </ListItemButton>
-                </ListItem>
-
-                <ListItem disablePadding sx={{bgcolor: location.pathname=="/create"? "grey": null}}>
-                    <ListItemButton onClick={() => {
-                        navigate("/create");
-                    }}>
-                        <ListItemIcon>
-                            <CreateIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Create" />
-                    </ListItemButton>
-                </ListItem>
-
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <PersonIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Profile" />
-                    </ListItemButton>
-                </ListItem>
-
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <Settings />
-                        </ListItemIcon>
-                        <ListItemText primary="Settings" />
-                    </ListItemButton>
-                </ListItem>
-
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <LogoutIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Logout" />
-                    </ListItemButton>
-                </ListItem>
+                {myListUI}
             </List>
         </Drawer>
     )
