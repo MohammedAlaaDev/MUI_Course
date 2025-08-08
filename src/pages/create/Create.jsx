@@ -1,6 +1,6 @@
 import "./Create.css";
 
-import React from 'react';
+import { useState } from 'react';
 
 import { Box, Button, InputAdornment, styled, TextField } from "@mui/material";
 import { blue } from "@mui/material/colors";
@@ -9,6 +9,8 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 export default function Create() {
+    let [title, settitle] = useState("");
+    let [price, setprice] = useState(0);
     const ColorButton = styled(Button)(({ theme }) => ({
         color: theme.palette.getContrastText(blue[700]),
         // @ts-ignore
@@ -30,6 +32,9 @@ export default function Create() {
                     },
                 }}
                 variant="filled"
+                onChange = {(e)=> {
+                    settitle(e.target.value)
+                }}
             />
             <TextField
                 label="Amount"
@@ -41,8 +46,20 @@ export default function Create() {
                     },
                 }}
                 variant="filled"
+                onChange = {(e)=>{
+                    setprice(Number(e.target.value))
+                }}
             />
-            <ColorButton variant="contained" sx={{ alignSelf: "self-start" }}>Submit<KeyboardArrowRightIcon /></ColorButton>
+            <ColorButton variant="contained" sx={{ alignSelf: "self-start" }} onClick={ (e) => {
+                fetch("http://localhost:3100/data", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body : JSON.stringify({title, price}),
+                })
+            }
+            }>Submit<KeyboardArrowRightIcon /></ColorButton>
         </Box>
     )
 }
