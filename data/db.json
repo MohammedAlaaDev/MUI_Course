@@ -1,5 +1,38 @@
 {
-    "myData": [
-        
-    ]
+    "data": [
+        {
+            "text": "aaasda",
+            "price": 12,
+            "id": 1
+        },
+        {
+            "text": "qq",
+            "price": 12,
+            "id": 2
+        },
+        {
+            "text": "ass",
+            "price": 2,
+            "id": 3
+        },
+        {
+            "text": "aaa",
+            "price": 12,
+            "id": 4
+        },
+        {
+            "text": "aaa",
+            "price": 12,
+            "id": 5
+        },
+        {
+            "text": "dddddd",
+            "price": 1111,
+            "id": 6
+        },
+        {
+            "text": "aaasdd",
+            "price": 3,
+            "id": 7
+        }
 }
