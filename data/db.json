@@ -1,14 +1,3 @@
 {
-    "data": [
-        {
-            "text": "aaasda",
-            "price": 12,
-            "id": 1
-        },
-        {
-            "text": "water",
-            "price": 10,
-            "id": 2
-        }
-    ]
+  "data": []
 }
