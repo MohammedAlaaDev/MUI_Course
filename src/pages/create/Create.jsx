@@ -25,6 +25,7 @@ export default function Create() {
     return (
         <Box component="form" sx={{ width: "350px", display: "flex", flexDirection: "column", gap: "20px" }}>
             <TextField
+                autoComplete="off"
                 onChange={(e) => {
                     setText(e.target.value);
                 }}
@@ -40,6 +41,7 @@ export default function Create() {
                 variant="filled"
             />
             <TextField
+                autoComplete="off"
                 onChange={(e) => {
                     // @ts-ignore
                     setPrice(Number(e.target.value));
