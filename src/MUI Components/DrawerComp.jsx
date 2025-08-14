@@ -21,27 +21,31 @@ export default function DrawerComp({ drawerWidth, fnc, mode, dsp, drawer, closeD
             text: "Home",
             icon: <HomeIcon />,
             path: "/",
+            id:1,
         },
         {
             text: "Create",
             icon: <CreateIcon />,
             path: "/create",
+            id:2,
         },
         {
             text: "Profile",
             icon: <PersonIcon />,
             path: "/profile",
+            id:3,
         },
         {
             text: "Settings",
             icon: <Settings />,
             path: "/Settings",
+            id:4,
         },
     ]
 
     let myListUI = myList.map((obj) => {
         return (
-            <ListItem disablePadding sx={{ bgcolor: location.pathname === obj.path ? "grey" : null }}>
+            <ListItem key={obj.id} disablePadding sx={{ bgcolor: location.pathname === obj.path ? "grey" : null }}>
                 <ListItemButton onClick={() => {
                     navigate(obj.path);
                 }}>
