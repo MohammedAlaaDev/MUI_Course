@@ -1,6 +1,7 @@
 import "./Create.css";
 
 import React, { useState } from 'react';
+import { useNavigate } from "react-router";
 
 import { Box, Button, InputAdornment, styled, TextField } from "@mui/material";
 import { blue } from "@mui/material/colors";
@@ -9,6 +10,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 export default function Create() {
+    let navigate = useNavigate();
     const ColorButton = styled(Button)(({ theme }) => ({
         color: theme.palette.getContrastText(blue[700]),
         // @ts-ignore
@@ -61,9 +63,11 @@ export default function Create() {
                             "Content-Type": "application/json",
                         },
                         body: JSON.stringify({ text, price })
-                    });
-                    setText("");
-                    setPrice("");
+                    }).then(() => {
+                        setText("");
+                        setPrice("");
+                        navigate("/");
+                    })
                 }
             }}>Submit<KeyboardArrowRightIcon /></ColorButton>
         </Box>
